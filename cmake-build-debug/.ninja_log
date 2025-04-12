@@ -1,0 +1,7 @@
+# ninja log v6
+5	388	7661620852831921	CMakeFiles/lab5.dir/ClCar.cpp.obj	c19bacb15530df82
+2	392	7661620852791484	CMakeFiles/lab5.dir/main.cpp.obj	857a136e2e951fc1
+9	231	7661626745878677	build.ninja	1698716be38c6ca9
+22	379	7661626746524287	CMakeFiles/lab5.dir/main.cpp.obj	857a136e2e951fc1
+25	397	7661626746554314	CMakeFiles/lab5.dir/ClCar.cpp.obj	c19bacb15530df82
+397	476	7661626750276988	lab5.exe	7f0f14838ed156d8
