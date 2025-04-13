@@ -3,14 +3,15 @@
 CCar::CCar(const string carName, double fuelAmount, double startMileage, double carPrice, double costPerKm)
     : name(carName), fuel(fuelAmount), mileage(startMileage), price(carPrice), pricePerKm(costPerKm) {}
 
-string CCar::getName() const { return name; }
-double CCar::getFuel() const { return fuel; }
-double CCar::getMileage() const { return mileage; }
-double CCar::getPrice() const { return price; }
-double CCar::getPricePerKm() const { return pricePerKm; }
-
-void CCar::setFuel(double newFuel) { fuel = newFuel; }
-void CCar::setPrice(double newPrice) { price = newPrice; }
+void CCar::compareWith(const CCar& other) const
+{
+    cout << "\nComparison between " << name << " and " << other.name << ":\n";
+    cout << fixed << setprecision(2);
+    cout << "Fuel difference: " << abs(fuel - other.fuel) << " l\n";
+    cout << "Mileage difference: " << abs(mileage - other.mileage) << " km\n";
+    cout << "Price difference: " << abs(price - other.price) << " UAH\n";
+    cout << "Price per km difference: " << abs(pricePerKm - other.pricePerKm) << " UAH/km\n";
+}
 
 void CCar::drive(double distance)
 {
@@ -34,6 +35,9 @@ void CCar::printInfo() const
          << "Mileage: " << mileage << " km\n"
          << "Price: " << price << " UAH\n";
 }
+
+
+
 
 CCar& CCar::operator=(const CCar& other)
 {
@@ -61,11 +65,12 @@ CCar& CCar::operator-=(double fuelAmount)
 
 bool CCar::operator==(const CCar& other) const
 {
-    return name == other.name &&
-           fuel == other.fuel &&
-           mileage == other.mileage &&
-           price == other.price &&
-           pricePerKm == other.pricePerKm;
+    bool compareName = name == other.name;
+    bool compareFuel = fuel == other.fuel;
+    bool compareMileage = mileage == other.mileage;
+    bool comparePrice = price == other.price;
+    bool comparePricePerKm = pricePerKm == other.pricePerKm;
+    return compareName && compareFuel && compareMileage && comparePrice && comparePricePerKm;
 }
 
 CCar& CCar::operator--()
@@ -99,12 +104,13 @@ istream& operator>>(istream& is, CCar& car)
     return is;
 }
 
-void CCar::compareWith(const CCar& other) const
-{
-    cout << "\nComparison between " << name << " and " << other.name << ":\n";
-    cout << fixed << setprecision(2);
-    cout << "Fuel difference: " << abs(fuel - other.fuel) << " l\n";
-    cout << "Mileage difference: " << abs(mileage - other.mileage) << " km\n";
-    cout << "Price difference: " << abs(price - other.price) << " UAH\n";
-    cout << "Price per km difference: " << abs(pricePerKm - other.pricePerKm) << " UAH/km\n";
-}
+string CCar::getName() const { return name; }
+double CCar::getFuel() const { return fuel; }
+double CCar::getMileage() const { return mileage; }
+double CCar::getPrice() const { return price; }
+double CCar::getPricePerKm() const { return pricePerKm; }
+
+void CCar::setFuel(double newFuel) { fuel = newFuel; }
+void CCar::setPrice(double newPrice) { price = newPrice; }
+
+
