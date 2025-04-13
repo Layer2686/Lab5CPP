@@ -1,4 +1,5 @@
 #include "ClCar.h"
+
 int main() {
     CCar car1("Lamborghini Aventador 2014", 50, 10000, 36800000, 2);
     CCar car2("Ferrari 488 GTB", 42, 16000,12750000, 4);
