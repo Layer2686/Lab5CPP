@@ -7,6 +7,7 @@ string CCar::getName() const { return name; }
 double CCar::getFuel() const { return fuel; }
 double CCar::getMileage() const { return mileage; }
 double CCar::getPrice() const { return price; }
+double CCar::getPricePerKm() const { return pricePerKm; }
 
 void CCar::setFuel(double newFuel) { fuel = newFuel; }
 void CCar::setPrice(double newPrice) { price = newPrice; }
@@ -30,6 +31,7 @@ void CCar::printInfo() const {
          << "Price: " << price << " UAH\n";
 }
 
+// Присвоювання
 CCar& CCar::operator=(const CCar& other) {
     if (this != &other) {
         name = other.name;
@@ -41,16 +43,19 @@ CCar& CCar::operator=(const CCar& other) {
     return *this;
 }
 
+// Додавання пального
 CCar& CCar::operator+=(double fuelAmount) {
     fuel += fuelAmount;
     return *this;
 }
 
+// Віднімання пального
 CCar& CCar::operator-=(double fuelAmount) {
     fuel -= fuelAmount;
     return *this;
 }
 
+// Порівняння машин (за всіма властивостями)
 bool CCar::operator==(const CCar& other) const {
     return name == other.name &&
            fuel == other.fuel &&
@@ -59,11 +64,13 @@ bool CCar::operator==(const CCar& other) const {
            pricePerKm == other.pricePerKm;
 }
 
+// Префіксний декремент — зменшення пального на 1 літр
 CCar& CCar::operator--() {
     fuel -= 1;
     return *this;
 }
 
+// Виведення
 ostream& operator<<(ostream& os, const CCar& car) {
     os << fixed << setprecision(2);
     os << "Name: " << car.name << "\n"
@@ -73,17 +80,13 @@ ostream& operator<<(ostream& os, const CCar& car) {
     return os;
 }
 
-istream& operator>>(istream& is, CCar& car) {
-    cout << "Enter car name: ";
-    getline(is, car.name);
-    cout << "Enter fuel amount: ";
-    is >> car.fuel;
-    cout << "Enter mileage: ";
-    is >> car.mileage;
-    cout << "Enter price: ";
-    is >> car.price;
-    cout << "Enter price per km: ";
-    is >> car.pricePerKm;
-    is.ignore(); // очищення буфера
-    return is;
+
+// Порівняння з виведенням різниці
+void CCar::compareWith(const CCar& other) const {
+    cout << "\nComparison between " << name << " and " << other.name << ":\n";
+    cout << fixed << setprecision(2);
+    cout << "Fuel difference: " << abs(fuel - other.fuel) << " l\n";
+    cout << "Mileage difference: " << abs(mileage - other.mileage) << " km\n";
+    cout << "Price difference: " << abs(price - other.price) << " UAH\n";
+    cout << "Price per km difference: " << abs(pricePerKm - other.pricePerKm) << " UAH/km\n";
 }
