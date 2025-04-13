@@ -24,6 +24,9 @@ int main() {
             cout << "\nEnter data for another car:\n";
         cin >> car3;
         car3.drive(30);
+        car3 += 15;
+        --car3;
+        car3 -=5;
         cout << "\nSecond car state after driving:\n";
         cout << car3;
         if (car1 == car3) {
@@ -44,6 +47,9 @@ int main() {
             cout << "\nSecond car state:\n";
         cout << car2;
         car2.drive(30);
+        car2 += 15;
+        --car2;
+        car2 -=5;
         cout << "\nSecond car state after driving:\n";
         cout << car2;
         if (car1 == car2) {
