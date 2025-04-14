@@ -2,8 +2,7 @@
 
 int main() {
     CCar car1("Lamborghini Aventador 2014", 50, 10000, 36800000, 2);
-    CCar car2("Ferrari 488 GTB", 42, 16000,12750000, 4);
-    CCar car3;
+    CCar car2("Ferrari 488 GTB", 42, 16000,12750000, 4);{}
     cout << "Initial car state:\n";
     cout << car1;
 
@@ -20,29 +19,30 @@ int main() {
     cin >> choice;
     cin.ignore();
     switch (choice) {
-        case 1:
+        case 1: {
+            CCar car3;
             cout << "\nEnter data for another car:\n";
-        cin >> car3;
-        car3.drive(30);
-        car3 += 15;
-        --car3;
-        car3 -=5;
-        cout << "\nSecond car state after driving:\n";
-        cout << car3;
-        if (car1 == car3) {
-            cout << "Cars are the same.\n";
-        }
-        else
-        {
-            cout << "Cars are different.\n";
-            car1.compareWith(car3);
-        }
-        car3 = car1;
-        cout << "\nAfter assigning car1 to car2:\n";
-        cout << car3;
+            cin >> car3;
+            car3.drive(30);
+            car3 += 15;
+            --car3;
+            car3 -=5;
+            cout << "\nSecond car state after driving:\n";
+            cout << car3;
+            if (car1 == car3) {
+                cout << "Cars are the same.\n";
+            }
+            else
+            {
+                cout << "Cars are different.\n";
+                car1.compareWith(car3);
+            }
+            car3 = car1;
+            cout << "\nAfter assigning car1 to car2:\n";
+            cout << car3;
 
-        break;
-
+            break;
+        }
         case 2:
             cout << "\nSecond car state:\n";
         cout << car2;
